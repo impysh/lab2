@@ -1,11 +1,18 @@
+from statistics import median
+
+
 def main():
     print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
     display_main_menu()
     num_list = get_user_input()
+
+    # uses number list
     calc_average(num_list)
     find_min_max(num_list)
-    sort_temperature(num_list)
-    calc_median_temperature(num_list)
+    sorted_values = sort_temperature(num_list) # get sorted values from this function
+
+    # uses sorted numbers list (ascending order)
+    calc_median_temperature(sorted_values) # get median using the SORTED VALUES previously taken by previous function
 
 def display_main_menu():
     print("Enter some numbers separated by commas (e.g. 5, 67, 32)")
@@ -32,10 +39,14 @@ def find_min_max(num_list):
     print("Min: " + str(minimum_value))
 
 def sort_temperature(num_list):
-    print("sort_temperature")
+    sorted_values = sorted(num_list)
 
-def calc_median_temperature(num_list):
-    print("calc_median_temperature")
+    print("Values in ascending order: " + str(sorted_values))
+    return sorted_values
+
+def calc_median_temperature(sorted_values):
+    median_value = median(sorted_values)
+    print("Median temperature: " + str(median_value))
 
 if __name__ == "__main__":
     main()
